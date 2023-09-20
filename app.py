@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.exceptions import HTTPException
 
 app = Flask(__name__)
 app.secret_key = 'elcruzo_secret_key'
@@ -20,7 +21,8 @@ class Product(db.Model):
     target_price = db.Column(db.Float)
     user_id = db.Column(db.String(80), db.ForeignKey('user.id'))
     
-
+with app.app_context():
+    db.create_all()
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -53,20 +55,36 @@ def login():
         if username in users and users[username]['password'] == password:
             user = User(username)
             login_user(user)
+            flash('Login successful', 'success')
             return redirect(url_for('index'))
+        else:
+            flash('Login failed. Please check your credentials.', 'danger')
     return render_template('login.html')
+
+
 
 @app.route('/logout')
 @login_required
 def logout():
     logout_user()
+    flash('Logged out successfully', 'success')
     return redirect(url_for('index'))
+
 
 @app.route('/track/<int:product_id>', methods=['POST'])
 @login_required
 def track_product(product_id):
-    target_price = float(request.form['target_price'])
+    try:
+        target_price = float(request.form['target_price'])
+        # Logic to save the target price and send price alerts goes here
+        flash('Product tracking started', 'success')
+    except ValueError:
+        flash('Invalid target price. Please enter a valid number.', 'danger')
     return redirect('/')
+
+@app.errorhandler(HTTPException)
+def handle_exception(e):
+    return render_template('error.html', error=e), e.code
 
 if __name__ == '__main__':
     app.run(debug=True)
