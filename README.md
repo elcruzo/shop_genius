@@ -9,6 +9,8 @@ Shop Genius is a web crawler and price tracking tool for gathering product infor
   - [Features](#features)
   - [Installation](#installation)
   - [Usage](#usage)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 
@@ -64,3 +66,39 @@ The SQLite database file is automatically created when you run the application f
     ```python
     python app.py
     ```
+
+2. Access the application through your web browser at `http://localhost:5000`
+
+3. Register or log in to your account to start using Shop Genius.
+
+4. Configure price alerts and track your favorite products.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to Shop Genius, please follow these steps:
+
+1. Fork the repository.
+
+2. Create a new branch for your feature or bug fix:
+   
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+3. Make your changes and commit them:
+
+   ```bash
+   git commit -m "Add your commit message here"
+   ```
+
+4. Push your changes to your fork:
+
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+5. Create a pull request on the main repository.
+
+## License
+
+This project is licensed under the [LICENSE](License) - see the LICENSE file for details.
