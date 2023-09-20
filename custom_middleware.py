@@ -44,7 +44,6 @@ class CustomMiddleware:
         # Log the exception for debugging purposes
         self.logger.error(f'Exception occurred while processing {request.url}: {str(exception)}')
 
-        
         if isinstance(exception, MyCustomException):           
             self.logger.error(f'Custom exception occurred: {str(exception)}')
            

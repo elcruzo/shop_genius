@@ -4,7 +4,7 @@ from email.mime.multipart import MIMEMultipart
 from twilio.rest import Client
 
 
-sender_email = 'your_email@gmail.com'
+sender_email = 'dev.elcruzo@gmail.com'
 sender_password = 'your_app_password'
 
 

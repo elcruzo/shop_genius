@@ -16,7 +16,6 @@ class ShopGenius(scrapy.Spider):
         product_prices = response.css('span.product-price::text').extract()
         product_prices = response.css('span.a-price span.a-offscreen::text').extract()
 
-        # Process and store the scraped data (you can define your own logic here)
         for title, price in zip(product_titles, product_prices):
             yield {
                 'title': title.strip(),
