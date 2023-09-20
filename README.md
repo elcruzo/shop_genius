@@ -101,4 +101,4 @@ Contributions are welcome! If you'd like to contribute to Shop Genius, please fo
 
 ## License
 
-This project is licensed under the [LICENSE](License) - see the LICENSE file for details.
+This project is licensed under the [LICENSE](LICENSE)) - see the LICENSE file for details.
