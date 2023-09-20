@@ -47,6 +47,7 @@ products = [
 def index():
     return render_template('index.html', products=products)
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -74,10 +75,21 @@ def logout():
 @app.route('/track/<int:product_id>', methods=['POST'])
 @login_required
 def track_product(product_id):
+
     try:
         target_price = float(request.form['target_price'])
-        # Logic to save the target price and send price alerts goes here
-        flash('Product tracking started', 'success')
+        
+        if product.current_price < target_price:
+            
+            send_email(product, current_user.id)
+
+            
+            user_phone = '+1234567890'  # Replace with the your phone number
+            send_sms(product, user_phone)
+
+            flash('Price alert sent!', 'success')
+        else:
+            flash('Price alert not triggered. The current price is above the target price.', 'info')
     except ValueError:
         flash('Invalid target price. Please enter a valid number.', 'danger')
     return redirect('/')

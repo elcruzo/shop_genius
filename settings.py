@@ -19,6 +19,10 @@ NEWSPIDER_MODULE = "shop_genius.spiders"
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
 
+DOWNLOADER_MIDDLEWARES = {
+    'shop_genius.custom_middleware.CustomMiddleware': 543,
+}
+
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
