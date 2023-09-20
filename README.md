@@ -8,6 +8,7 @@ Shop Genius is a web crawler and price tracking tool for gathering product infor
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Installation](#installation)
+  - [Usage](#usage)
 
 ## Features
 
@@ -47,3 +48,19 @@ Shop Genius is a web crawler and price tracking tool for gathering product infor
    pip install Flask-Login
    ```
  
+5. Set up and configure the SQLite database:
+
+Shop Genius uses SQLite as its database backend. You don't need to install a separate database server. SQLite is a lightweight, serverless database that stores data in a local file.
+
+The SQLite database file is automatically created when you run the application for the first time. You can find the database file in the project directory with the name shop_genius.db.
+
+6. Configure your email and Twilio credentials for sending price alerts in the `price_tracker.py` script.
+
+
+## Usage
+
+1. Run the application:
+
+    ```python
+    python app.py
+    ```
