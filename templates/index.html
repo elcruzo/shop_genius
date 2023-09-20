@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Tracker</title>
+</head>
+<body>
+    <h1>Product Price Tracker</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                <h2>{{ product.name }}</h2>
+                <p>Current Price: ${{ product.current_price }}</p>
+                <form method="POST" action="/track/{{ product.id }}">
+                    <label for="target_price">Set Target Price:</label>
+                    <input type="number" step="0.01" name="target_price" required>
+                    <button type="submit">Track</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
